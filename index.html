@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Silverline Trading Community</title>
+    <meta
+      name="description"
+      content="Silverline Trading Community offers mentorship in trading strategy, psychology, and risk management. Join our Discord and contact us on WhatsApp."
+    />
+    <style>
+      :root {
+        --bg: #07121d;
+        --bg-soft: #0d1d2d;
+        --panel: rgba(17, 30, 44, 0.9);
+        --panel-strong: rgba(22, 36, 52, 1);
+        --silver: #dfe7ef;
+        --silver-soft: #b8c5d1;
+        --blue: #6ea8ff;
+        --blue-deep: #3a7fe9;
+        --blue-glow: #8ec5ff;
+        --line: rgba(255, 255, 255, 0.1);
+        --text: #edf5ff;
+        --muted: #bfd0e3;
+        --success: #8fe3b4;
+        --shadow: 0 18px 40px rgba(2, 10, 18, 0.45);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: radial-gradient(circle at top, #102437 0%, var(--bg) 45%, #040c14 100%);
+        color: var(--text);
+        line-height: 1.7;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .container {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      section {
+        padding: 88px 0;
+      }
+
+      .section-tag {
+        display: inline-block;
+        font-size: 0.78rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--blue-glow);
+        background: rgba(110, 168, 255, 0.08);
+        border: 1px solid rgba(110, 168, 255, 0.25);
+        border-radius: 999px;
+        padding: 9px 14px;
+      }
+
+      h1, h2, h3, h4, p {
+        margin-top: 0;
+      }
+
+      h1 {
+        font-size: clamp(2.7rem, 5vw, 5.1rem);
+        line-height: 1.08;
+        letter-spacing: -0.05em;
+        margin: 18px 0 18px;
+      }
+
+      h2 {
+        font-size: clamp(2.15rem, 4vw, 3.4rem);
+        line-height: 1.1;
+        letter-spacing: -0.05em;
+        margin-bottom: 16px;
+      }
+
+      h3 {
+        font-size: 1.45rem;
+        margin-bottom: 14px;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 15px 26px;
+        border-radius: 999px;
+        font-weight: 700;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        border: 1px solid transparent;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--blue) 0%, var(--blue-deep) 100%);
+        color: white;
+        box-shadow: 0 16px 28px rgba(58, 127, 233, 0.35);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--text);
+        border-color: rgba(255, 255, 255, 0.16);
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: rgba(7, 18, 29, 0.76);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+      }
+
+      .nav {
+        min-height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .brand {
+        font-size: 1.42rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+      }
+
+      .brand span {
+        color: var(--blue-glow);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        font-size: 0.96rem;
+        color: var(--silver-soft);
+      }
+
+      .nav-links a:hover {
+        color: var(--text);
+      }
+
+      .hero {
+        padding-top: 84px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: center;
+        gap: 40px;
+      }
+
+      .lead {
+        color: var(--muted);
+        font-size: 1.04rem;
+        max-width: 660px;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 28px;
+      }
+
+      .metrics {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 28px;
+        margin-top: 32px;
+      }
+
+      .metric {
+        min-width: 120px;
+      }
+
+      .metric strong {
+        display: block;
+        font-size: 1.8rem;
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+
+      .metric span {
+        color: var(--muted);
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .hero-card {
+        background: linear-gradient(180deg, rgba(18, 31, 45, 0.9), rgba(9, 17, 26, 0.92));
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 28px;
+        box-shadow: var(--shadow);
+      }
+
+      .hero-badge {
+        display: inline-block;
+        background: rgba(110, 168, 255, 0.10);
+        color: var(--blue-glow);
+        border: 1px solid rgba(110, 168, 255, 0.24);
+        border-radius: 999px;
+        padding: 8px 12px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .glass-box {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 20px;
+        padding: 18px;
+        margin-top: 18px;
+      }
+
+      .mini-chart {
+        height: 180px;
+        display: flex;
+        align-items: end;
+        gap: 10px;
+        padding-top: 18px;
+      }
+
+      .mini-chart span {
+        display: block;
+        width: 100%;
+        background: linear-gradient(180deg, #a7c9ff 0%, #4a88ff 100%);
+        border-radius: 12px 12px 0 0;
+      }
+
+      .mini-chart span:nth-child(1) { height: 22%; }
+      .mini-chart span:nth-child(2) { height: 35%; }
+      .mini-chart span:nth-child(3) { height: 50%; }
+      .mini-chart span:nth-child(4) { height: 46%; }
+      .mini-chart span:nth-child(5) { height: 68%; }
+      .mini-chart span:nth-child(6) { height: 100%; }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .card {
+        background: rgba(18, 31, 45, 0.8);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 28px 22px;
+        box-shadow: var(--shadow);
+      }
+
+      .icon {
+        width: 54px;
+        height: 54px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        font-size: 1.6rem;
+        background: rgba(110, 168, 255, 0.12);
+        color: var(--blue-glow);
+        margin-bottom: 18px;
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      .panel {
+        background: rgba(18, 31, 45, 0.8);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 28px 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .check-list {
+        list-style: none;
+        padding: 0;
+        margin: 24px 0 0;
+      }
+
+      .check-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        color: var(--muted);
+        margin-bottom: 16px;
+      }
+
+      .check {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 0.74rem;
+        font-weight: 900;
+        color: #072a22;
+        background: rgba(143, 227, 180, 0.9);
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+
+      .pricing {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .price-card {
+        background: rgba(18, 31, 45, 0.8);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 24px 20px;
+        box-shadow: var(--shadow);
+      }
+
+      .price-card.featured {
+        background: linear-gradient(180deg, rgba(22, 36, 52, 0.95), rgba(14, 25, 34, 0.94));
+        border-color: rgba(110,168,255,0.8);
+      }
+
+      .tag {
+        display: inline-block;
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: rgba(110, 168, 255, 0.12);
+        border: 1px solid rgba(110,168,255,0.22);
+        color: var(--blue-glow);
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+
+      .price {
+        font-size: 2.4rem;
+        font-weight: 800;
+        letter-spacing: -0.05em;
+        margin: 18px 0 12px;
+      }
+
+      .price small {
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .payment-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .payment-box {
+        background: rgba(18, 31, 45, 0.8);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 24px 22px;
+        box-shadow: var(--shadow);
+      }
+
+      .payment-box h4 {
+        margin-bottom: 8px;
+      }
+
+      .payment-box p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .notice {
+        background: rgba(110, 168, 255, 0.08);
+        border: 1px solid rgba(110, 168, 255, 0.22);
+        border-radius: 22px;
+        padding: 22px 20px;
+      }
+
+      .contact-boxes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        margin-top: 24px;
+      }
+
+      .contact-box {
+        flex: 1 1 250px;
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 18px 16px;
+      }
+
+      .contact-box strong {
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      footer {
+        padding: 32px 0 60px;
+        color: var(--silver-soft);
+      }
+
+      @media (max-width: 900px) {
+        .nav {
+          flex-direction: column;
+          justify-content: center;
+          padding: 16px 0;
+        }
+
+        .hero-grid,
+        .cards,
+        .two-col,
+        .pricing,
+        .payment-grid {
+          grid-template-columns: 1fr;
+        }
+
+        section {
+          padding: 72px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <a href="#top" class="brand"><span>Silverline</span> Trading</a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#mentorship">Mentorship</a>
+          <a href="#payments">Payments</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a class="btn btn-primary" href="https://discord.gg/cFjd7b2x4" target="_blank" rel="noreferrer">Join Discord</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <span class="section-tag">Trading community</span>
+            <h1>Trade with structure. Grow with discipline.</h1>
+            <p class="lead">
+              Silverline Trading Community is built for traders who want more than guesswork.
+              We focus on practical strategy, emotional control, and risk-first execution so you can build consistency over time.
+            </p>
+
+            <div class="cta-row">
+              <a class="btn btn-primary" href="https://discord.gg/cFjd7b2x4" target="_blank" rel="noreferrer">Join Our Discord</a>
+              <a class="btn btn-secondary" href="#contact">Get in Touch</a>
+            </div>
+
+            <div class="metrics">
+              <div class="metric">
+                <strong>1-on-1</strong>
+                <span>Mentorship</span>
+              </div>
+              <div class="metric">
+                <strong>3 Core</strong>
+                <span>Focus Areas</span>
+              </div>
+              <div class="metric">
+                <strong>Risk-first</strong>
+                <span>Mindset</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-card" aria-label="Trading chart preview">
+            <div class="hero-badge">Building better traders</div>
+            <h3 style="margin-top: 18px; margin-bottom: 6px;">Execution backed by clarity</h3>
+            <p class="muted" style="margin-bottom: 0;">Strategy • Psychology • Risk Management</p>
+
+            <div class="glass-box">
+              <div style="display: flex; justify-content: space-between; color: var(--muted); font-size: 0.8rem; margin-bottom: 8px;">
+                <span>Growth</span>
+                <span>Persistence</span>
+              </div>
+              <div class="mini-chart" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="container">
+          <span class="section-tag">About us</span>
+          <h2>For traders who want to stay disciplined and improve consistently.</h2>
+          <p class="lead">
+            Trading is not only about making entries and exits. It is about mindset, process, patience,
+            and the ability to protect your capital when the market is emotional. Our community helps traders develop the habits that matter most.
+          </p>
+
+          <div class="cards" style="margin-top: 30px;">
+            <div class="card">
+              <div class="icon">📈</div>
+              <h3>Trading strategy</h3>
+              <p class="muted">Learn practical and repeatable systems designed to help you trade with more clarity and confidence.</p>
+            </div>
+
+            <div class="card">
+              <div class="icon">🧠</div>
+              <h3>Trading psychology</h3>
+              <p class="muted">Build emotional control, patience, and discipline so you can stay composed under pressure.</p>
+            </div>
+
+            <div class="card">
+              <div class="icon">🛡️</div>
+              <h3>Risk management</h3>
+              <p class="muted">Protect your capital with stronger position sizing, rules, and risk-based decision-making.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services">
+        <div class="container">
+          <span class="section-tag">What we offer</span>
+          <h2>Mentorship and learning built around real trading progress.</h2>
+
+          <div class="two-col" style="margin-top: 28px;">
+            <div class="panel">
+              <h3>Mentorship</h3>
+              <p class="muted">Personal guidance to improve your process, mindset, and execution.</p>
+              <ul class="check-list">
+                <li><span class="check">✓</span><span>Strategy review and trading plan guidance</span></li>
+                <li><span class="check">✓</span><span>Psychology coaching for discipline and emotional control</span></li>
+                <li><span class="check">✓</span><span>Risk management support to protect your capital</span></li>
+                <li><span class="check">✓</span><span>Accountability and consistent improvement support</span></li>
+              </ul>
+            </div>
+
+            <div class="panel">
+              <h3>Classes</h3>
+              <p class="muted">Structured learning sessions that help traders build strong fundamentals.</p>
+              <ul class="check-list">
+                <li><span class="check">✓</span><span>Trading strategy education</span></li>
+                <li><span class="check">✓</span><span>Trading psychology lessons</span></li>
+                <li><span class="check">✓</span><span>Risk management classes</span></li>
+                <li><span class="check">✓</span><span>Community learning and group support</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="mentorship">
+        <div class="container">
+          <span class="section-tag">Mentorship plans</span>
+          <h2>Choose the level of guidance that fits your trading journey.</h2>
+
+          <div class="pricing" style="margin-top: 28px;">
+            <div class="price-card">
+              <span class="tag">Starter</span>
+              <div class="price">R 499 <small>/ month</small></div>
+              <p class="muted">For new traders who need structure and foundational support.</p>
+              <ul class="check-list">
+                <li><span class="check">✓</span><span>Community access</span></li>
+                <li><span class="check">✓</span><span>Basic mentorship guidance</span></li>
+                <li><span class="check">✓</span><span>Risk management basics</span></li>
+              </ul>
+            </div>
+
+            <div class="price-card featured">
+              <span class="tag">Popular</span>
+              <div class="price">R 1,299 <small>/ month</small></div>
+              <p class="muted">For traders who want deeper personal growth and accountability.</p>
+              <ul class="check-list">
+                <li><span class="check">✓</span><span>Everything in Starter</span></li>
+                <li><span class="check">✓</span><span>Strategy support</span></li>
+                <li><span class="check">✓</span><span>Psychology & mindset coaching</span></li>
+                <li><span class="check">✓</span><span>Priority Q&A access</span></li>
+              </ul>
+            </div>
+
+            <div class="price-card">
+              <span class="tag">Elite</span>
+              <div class="price">R 2,499 <small>/ month</small></div>
+              <p class="muted">High-touch guidance for traders ready to sharpen their edge.</p>
+              <ul class="check-list">
+                <li><span class="check">✓</span><span>Everything in Popular</span></li>
+                <li><span class="check">✓</span><span>Direct mentorship sessions</span></li>
+                <li><span class="check">✓</span><span>Advanced trade reviews</span></li>
+                <li><span class="check">✓</span><span>Tailored risk framework</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="payments">
+        <div class="container">
+          <span class="section-tag">Payments</span>
+          <h2>Easy and secure payment options.</h2>
+
+          <div class="payment-grid" style="margin-top: 28px;">
+            <div class="payment-box">
+              <h4>EFT</h4>
+              <p>Electronic Funds Transfer is available for mentorship and class payments.</p>
+            </div>
+
+            <div class="payment-box">
+              <h4>Bank Transfer</h4>
+              <p>Direct transfer payments are also accepted for your convenience.</p>
+            </div>
+          </div>
+
+          <div class="notice" style="margin-top: 24px;">
+            <h3 style="margin-bottom: 8px;">Payment details</h3>
+            <p class="muted" style="margin: 0;">
+              Please confirm your payment after sending it so your mentorship access can be activated. If you need the exact payment details, contact me directly.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <span class="section-tag">Connect</span>
+          <h2>Join our community and speak to me directly.</h2>
+
+          <div class="contact-boxes">
+            <div class="contact-box">
+              <strong>Discord</strong>
+              <a href="https://discord.gg/cFjd7b2x4" target="_blank" rel="noreferrer">Join the Discord community</a>
+            </div>
+
+            <div class="contact-box">
+              <strong>WhatsApp</strong>
+              <a href="https://wa.me/27695502436" target="_blank" rel="noreferrer">+27 69 550 2436</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        © 2026 Silverline Trading Community. All rights reserved.
+      </div>
+    </footer>
+  </body>
+</html>
